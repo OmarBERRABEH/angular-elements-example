@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Angular Elements Demo</title>
+</head>
+<body>
+
+  <section>
+    <p> static</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, libero veritatis laboriosam iste voluptas harum mollitia molestias cum dolorem reiciendis quas repudiandae eligendi dolores animi obcaecati explicabo eveniet enim id?</p>
+  </section>
+
+  <section>
+    <p> another js widget </p>
+    <input type="range"  id="range" value="0"/>
+    <script> 
+      var rangeInput =  document.getElementById("range");
+      rangeInput.addEventListener('input', function(e) {
+        changeRangeWidget(e.target.value);
+      });
+      function changeRangeInput(value) {
+        rangeInput.value = value;
+      }
+    </script>
+  </section>
+
+  <custom-widget range="0"></custom-widget>
+
+  <section>
+      <p> static</p>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, libero veritatis laboriosam iste voluptas harum mollitia molestias cum dolorem reiciendis quas repudiandae eligendi dolores animi obcaecati explicabo eveniet enim id?</p>
+    </section>  
+  <script>
+      const widgetComponent = document.querySelector('custom-widget');
+
+      function changeRangeWidget(value) {
+        widgetComponent.setAttribute('range', value);
+      }
+      
+      widgetComponent.addEventListener('changeRange', function({detail}) {
+          changeRangeInput(detail);
+      })
+  </script>
+  <script src="dist/main.bundle.js"></script>
+</body>
+</html>
